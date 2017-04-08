@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
                 .setImageDrawable(getResources().getDrawable(R.drawable.newsstanda))
                 .setTextTitle("GOOGLE NEWS STAND NOT FOUND")
                 .setTextSubTitle("PLEASE INSTALL IT!")
-                .setBody("After clicking continue, please install Newsstand from the Play store.  Then relaunch this app")
+                .setBody("After clicking continue, please install Newsstand from the Play store. Then Close the Google Play store, close this app and relaunch this app")
                 .setPositiveButtonText("Continue")
                 .setOnPositiveClicked(new FancyAlertDialog.OnPositiveClicked() {
                     @Override
@@ -49,6 +49,8 @@ public class MainActivity extends AppCompatActivity {
                             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + appPackageName)));
                         } catch (android.content.ActivityNotFoundException anfe) {
                             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + appPackageName)));
+                        }finally {
+                            finish();
                         }
                     }
                 })
